@@ -76,8 +76,10 @@
           
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{URL::to('vacations/edit/'.$vacation->id)}}">Update</a></li>
+                    @if(Auth::user()->role == 1)
                     <li><a href="{{URL::to('vacations/approve/'.$vacation->id)}}">Approve</a></li>
                     <li><a href="{{URL::to('vacations/reject/'.$vacation->id)}}">Reject</a></li>
+                    @endif
                     <li><a href="{{URL::to('vacations/delete/'.$vacation->id)}}" onclick="return (confirm('Are you sure you want to delete this vacation?'))">Delete</a></li>
                     
                   </ul>

@@ -35,7 +35,27 @@ class VacationController extends Controller
         $vacation->status = 'Pending';
         $vacation->save();
 
-        return Redirect::to('vacation_types');
+        return Redirect::to('vacations');
+    }
+
+    public function edit($id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation_types = VacationType::all();
+        $users = User::all();
+        return view('vacations.edit',compact('vacation_types','users','vacation'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->user_id = $request->user;
+        $vacation->vacation_type_id = $request->vacation_type;
+        $vacation->requested_days = $request->days;
+        $vacation->status = 'Pending';
+        $vacation->update();
+
+        return Redirect::to('vacations');
     }
 
     public function approve(Request $request, $id)
