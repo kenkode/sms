@@ -35,7 +35,6 @@ Route::post('vacations/update/{id}', 'VacationController@update');
 Route::get('vacations/delete/{id}', 'VacationController@destroy');
 Route::get('vacations/create', 'VacationController@create');
 Route::post('vacations/store', 'VacationController@store');
-Route::get('vacations/approve/{id}', 'VacationController@approveVacation');
-Route::post('vacations/approve/{id}', 'VacationController@approve');
+Route::get('vacations/approve/{id}', 'VacationController@approve');
 Route::get('vacations/reject/{id}', 'VacationController@rejectVacation');
 Route::post('vacations/reject/{id}', 'VacationController@reject');
