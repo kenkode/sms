@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('nhif_number')->nullable();
             $table->string('salary')->nullable();
             $table->string('password');
+            $table->integer('role');
             $table->rememberToken();
             $table->timestamps();
         });
