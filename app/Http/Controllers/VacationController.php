@@ -40,6 +40,7 @@ class VacationController extends Controller
     {
         $vacation = Vacation::find($id);
         $vacation->status = 'Approved';
+        $vacation->reason = '';
         $vacation->update();
 
         return Redirect::to('vacations');
