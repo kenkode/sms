@@ -35,7 +35,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-          <a class="btn btn-info btn-sm" href="{{ URL::to('vacation_types/create')}}">new vacation</a>
+          <a class="btn btn-info btn-sm" href="{{ URL::to('vacations/create')}}">new vacation</a>
         </div>
         <div class="panel-body">
 
@@ -64,7 +64,7 @@
           <td> {{ $i }}</td>
           <td>{{ $vacation->user->name }}</td>
           <td>{{ $vacation->vacationType->name }}</td>
-          <td>{{ $vacation->days }}</td>
+          <td>{{ $vacation->requested_days }}</td>
           <td>{{ $vacation->status }}</td>
           <td>{{ $vacation->reason }}</td>
           <td>

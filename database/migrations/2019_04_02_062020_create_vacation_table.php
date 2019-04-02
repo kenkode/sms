@@ -17,7 +17,6 @@ class CreateVacationTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('vacation_type_id');
-            $table->string('type');
             $table->integer('requested_days');
             $table->string('status');
             $table->string('reason')->nullable();
