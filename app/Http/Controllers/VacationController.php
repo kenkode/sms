@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Vacation;
 use App\VacationType;
 use App\User;
+use Mail;
+use App\Mail\VacationStatus;
 use Redirect;
 
 class VacationController extends Controller
@@ -43,6 +45,8 @@ class VacationController extends Controller
         $vacation->reason = '';
         $vacation->update();
 
+        Mail::to($vacation->user->email)->send(new VacationStatus($vacation));
+
         return Redirect::to('vacations');
     }
 
@@ -58,6 +62,8 @@ class VacationController extends Controller
         $vacation->status = 'Rejected';
         $vacation->reason = $request->reason;
         $vacation->update();
+
+        Mail::to($vacation->user->email)->send(new VacationStatus($vacation));
 
         return Redirect::to('vacations');
     }
