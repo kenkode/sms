@@ -35,4 +35,35 @@ class VacationController extends Controller
 
         return Redirect::to('vacation_types');
     }
+
+    public function approveVacation($id)
+    {
+        $vacation = Vacation::find($id);
+        return view('vacations.approve',compact('vacation'));
+    }
+
+    public function approve(Request $request, $id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->status = 'Approved';
+        $vacation->update();
+
+        return Redirect::to('vacations');
+    }
+
+    public function rejectVacation($id)
+    {
+        $vacation = Vacation::find($id);
+        return view('vacations.approve',compact('vacation'));
+    }
+
+    public function reject(Request $request, $id)
+    {
+        $vacation = Vacation::find($id);
+        $vacation->status = 'Rejected';
+        $vacation->reason = $request->reason;
+        $vacation->update();
+
+        return Redirect::to('vacations');
+    }
 }
